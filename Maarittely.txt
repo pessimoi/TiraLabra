@@ -1,0 +1,22 @@
+Määrittelydokumentti
+
+1. Mitä algoritmeja ja tietorakenteita toteutat työssäsi?
+2. Mitä ongelmaa ratkaiset ja miksi valitsit kyseiset algoritmit/tietorakenteet?
+3. Mitä syötteitä ohjelma saa ja miten näitä käytetään?
+4. Tavoitteena olevat aika- ja tilavaativuudet (m.m. O-analyysi)?
+5. Lähteet?
+---------------------------------------------------------------------------------
+
+1. Tulen käyttämään työssäni A* ja dijkstran algoritmejä. 
+
+2. Tietorakenteita, joita tulen käyttämään ovat mininimi keko ja priority queue
+
+3. Ohjelma saa käyttäjältä kartan korkeuden ja leveyden syötteenä, sekä tyhjät kohdat syötteenä, joidenka perusteella se luo kartan.
+
+4. A* aikavaativuus riippuu heurestiikasta, mutta manhattan etäisyydellä, se on suunilleen O(log n)
+   Tilavaativuus on O(n)
+   Dijkstrassa worst case perfomance on O(|E| + |V| log |V|)
+   Tilavaativuus on O(n) 
+
+5. Wikipedia  
+   T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein: Introduction to Algorithms, 3rd ed., MIT Press, 2009.
