@@ -11,7 +11,7 @@ public class TiraLabra {
         System.out.println("moi");
 
         System.out.println("Anna korkeus: ");
-        int korkeus = 5;
+        int korkeus = 4;
 //        int korkeus = Integer.parseInt(lukija.nextLine());
         System.out.println("Anna leveys: ");
         int leveys = 5;
@@ -19,7 +19,7 @@ public class TiraLabra {
 
 
         System.out.println("Anna tyhjien kohtien määrä pinta-alasta prosenteissa 0-100");
-        int seinia = 140;
+        int seinia = 100;
 //        int seinia = Integer.parseInt(lukija.nextLine());
 
         char[][] kartta = new char[korkeus][leveys];
@@ -44,7 +44,9 @@ public class TiraLabra {
         while (laskuri > 0) {
             int h = arpoja.nextInt(korkeus);
             int w = arpoja.nextInt(leveys);
-            kartta[h][w] = '.';
+            if ((h != 0 || w != 0) && (h != kartta.length-1 || w != kartta[0].length-1)) {
+                kartta[h][w] = '.';
+            }
             laskuri--;
         }
 
@@ -57,7 +59,9 @@ public class TiraLabra {
             System.out.println("");
         }
 
+        System.out.println("");
         Star star = new Star(kartta);
         star.kaynnisty();
+
     }
 }
