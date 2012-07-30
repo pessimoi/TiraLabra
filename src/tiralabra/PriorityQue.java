@@ -16,8 +16,8 @@ public class PriorityQue {
 
         if (koko > 0) {
             while (true) {
-                int uudesta = node.getToGo();
-                if (uudesta < jono[num].getToGo()) {
+                int uudesta = node.getToGo() + node.getValue();
+                if (uudesta < jono[num].getToGo() + node.getValue()) {
                     break;
                 } else if (num == koko - 1) {
                     num++;
@@ -54,7 +54,7 @@ public class PriorityQue {
     public Node pop() {
         Node palaute = jono[0];
 
-        Node[] kopio = new Node[jono.length];
+        Node[] kopio = new Node[koko];
         for (int i = 0; i < kopio.length; i++) {
             kopio[i] = jono[i];
         }
