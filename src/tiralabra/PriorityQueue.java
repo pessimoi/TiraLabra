@@ -1,13 +1,15 @@
 package tiralabra;
 
-public class PriorityQue {
+public class PriorityQueue {
 
     private int koko;
     private Node[] jono;
+    private int type;
 
-    public PriorityQue(int size) {
+    public PriorityQueue(int size, int type) {
         this.koko = 0;
         this.jono = new Node[koko];
+        this.type = type;
     }
 
     public void lisaa(Node node) {
@@ -16,8 +18,14 @@ public class PriorityQue {
 
         if (koko > 0) {
             while (true) {
-                int uudesta = node.getToGo() + node.getValue();
-                if (uudesta < jono[num].getToGo() + node.getValue()) {
+                int uudesta = node.getValue();
+                int vertaus = node.getValue();
+               if (type == 1){
+                   uudesta = uudesta + node.getToGo();
+                   vertaus = vertaus + jono[num].getToGo();
+               }
+                 
+                if (uudesta < vertaus) {
                     break;
                 } else if (num == koko - 1) {
                     num++;

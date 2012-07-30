@@ -33,10 +33,23 @@ public class TiraLabra {
             map = mapCreator.generateMap();
         }
 
-        Star star = new Star(map);
+        System.out.println("");
+        System.out.println("");
+        System.out.println("A*");
+        System.out.println("");
+
+        Logic star = new Logic(map, 0);
         star.kaynnisty();
         star.createPath();
-//        star.printPath();
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Dijkstra");
+        System.out.println("");
+
+        Logic dijkstra = new Logic(map, 1);
+        dijkstra.kaynnisty();
+        dijkstra.createPath();
 
     }
 }

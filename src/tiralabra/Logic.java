@@ -1,23 +1,25 @@
 package tiralabra;
 
-public class Star {
+public class Logic {
 
     private static Node[][] pohja;
     private static char[][] kartta;
     private static char[][] path;
     private static String steps;
+    private static int type;
 
-    public Star(char[][] kartta) {
+    public Logic(char[][] kartta, int type) {
         this.kartta = kartta;
         this.path = new char[kartta.length][kartta[0].length];
         this.steps = "";
         this.pohja = luoPohja(kartta);
+        this.type = type;
     }
 
     public void kaynnisty() {
 
         int koko = (kartta.length * kartta[0].length);
-        PriorityQue jono = new PriorityQue(koko);
+        PriorityQueue jono = new PriorityQueue(koko, type);
         Node solmu = pohja[0][0];
         jono.lisaa(solmu);
 
@@ -61,19 +63,11 @@ public class Star {
                 ylos.setReitti(solmu.getReitti(), 'Y');
                 ylos.setValue(solmu.getValue() + 1);
                 jono.lisaa(ylos);
-                System.out.println("Node: " + solmu.getValue());
+//                System.out.println("Node: " + solmu.getValue());
             }
             if (jono.isEmpty()) {
                 break;
             }
-
-            //VASEN YLÄVIISTO
-
-            //OIKEA YLÄVIISTO
-
-            //VASEN ALAVIISTO
-
-            //OIKEA ALAVIISTO
         }
     }
 

@@ -35,8 +35,8 @@ public class MapCreator {
 
         map[0][0] = '*';
         map[height - 1][width - 1] = '*';
-
-        printMap(map);
+//
+//        printMap(map);
 
 
         //CREATING THE EMPTY AREAS
