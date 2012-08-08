@@ -36,6 +36,8 @@ public class PriorityQueue {
             while (true) {
                 int uudesta = node.getValue();
                 int vertaus = node.getValue();
+                
+                //Tarkistaa onko käytettävä A* vai Dijkstraa
                 if (type == 1) {
                     uudesta = uudesta + node.getToGo();
                     vertaus = vertaus + jono[num].getToGo();
@@ -51,21 +53,10 @@ public class PriorityQueue {
             }
 
             Node[] kopio = new Node[jono.length];
-            for (int i = 0; i < kopio.length; i++) {
-                kopio[i] = jono[i];
-            }
+            System.arraycopy(jono, 0, kopio, 0, kopio.length);
 
             jono = new Node[koko + 1];
-
-            int j = 0;
-            for (int i = 0; i < jono.length; i++) {
-                if (i == num) {
-                    jono[i] = node;
-                } else {
-                    jono[i] = kopio[j];
-                    j++;
-                }
-            }
+            jononMuokkaus(num, node, kopio);
 
         } else {
             jono = new Node[1];
@@ -73,6 +64,24 @@ public class PriorityQueue {
         }
 
         koko++;
+    }
+
+    /**
+     * Laittaa halutun solmun oikeaan väliin jonossa
+     * @param num Kohta johon solmu on laitettava
+     * @param node Solmu joka lisätään jonoon
+     * @param kopio Kopio taulukosta
+     */
+    private void jononMuokkaus(int num, Node node, Node[] kopio) {
+        int j = 0;
+        for (int i = 0; i < jono.length; i++) {
+            if (i == num) {
+                jono[i] = node;
+            } else {
+                jono[i] = kopio[j];
+                j++;
+            }
+        }
     }
 
     /**
@@ -84,9 +93,7 @@ public class PriorityQueue {
         Node palaute = jono[0];
 
         Node[] kopio = new Node[koko];
-        for (int i = 0; i < kopio.length; i++) {
-            kopio[i] = jono[i];
-        }
+        System.arraycopy(jono, 0, kopio, 0, kopio.length);
 
         jono = new Node[koko - 1];
         for (int i = 1; i < kopio.length; i++) {
