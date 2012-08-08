@@ -51,40 +51,83 @@ public class Logiikka {
                 break;
             }
 
-            //ALAS
-            if (nytY < kartta.length - 1 && kartta[nytY + 1][nytX] != '#' && pohja[nytY + 1][nytX].getValue() == Integer.MAX_VALUE) {
-                Node alas = pohja[nytY + 1][nytX];
-                alas.setReitti(solmu.getReitti(), 'A');
-                alas.setValue(solmu.getValue() + 1);
-                jono.lisaa(alas);
-            }
+            tarkastaAlas(nytY, nytX, solmu, jono);
+            tarkastaOikea(nytX, nytY, solmu, jono);
+            tarkastaVasen(nytX, nytY, solmu, jono);
+            tarkastaYlos(nytY, nytX, solmu, jono);
 
-            //OIKEA
-            if (nytX < kartta[0].length - 1 && kartta[nytY][nytX + 1] != '#' && pohja[nytY][nytX + 1].getValue() == Integer.MAX_VALUE) {
-                Node oikea = pohja[nytY][nytX + 1];
-                oikea.setReitti(solmu.getReitti(), 'O');
-                oikea.setValue(solmu.getValue() + 1);
-                jono.lisaa(oikea);
-            }
-
-            //VASEN
-            if (nytX > 0 && kartta[nytY][nytX - 1] != '#' && pohja[nytY][nytX - 1].getValue() == Integer.MAX_VALUE) {
-                Node vasen = pohja[nytY][nytX - 1];
-                vasen.setReitti(solmu.getReitti(), 'V');
-                vasen.setValue(solmu.getValue() + 1);
-                jono.lisaa(vasen);
-            }
-            //YLÖS
-            if (nytY > 0 && kartta[nytY - 1][nytX] != '#' && pohja[nytY - 1][nytX].getValue() == Integer.MAX_VALUE) {
-                Node ylos = pohja[nytY - 1][nytX];
-                ylos.setReitti(solmu.getReitti(), 'Y');
-                ylos.setValue(solmu.getValue() + 1);
-                jono.lisaa(ylos);
-//                System.out.println("Node: " + solmu.getValue());
-            }
             if (jono.isEmpty()) {
                 break;
             }
+        }
+    }
+
+    /**
+     * Katsoo kyseisen solmun yläpuolelle
+     *
+     * @param nytY Tämänhetkisen solmun y-sijainti
+     * @param nytX Tämänhetkisen solmun x-sijainti
+     * @param solmu Tämänhetkinen solmu
+     * @param jono Tärkeysjono
+     */
+    private void tarkastaYlos(int nytY, int nytX, Node solmu, PriorityQueue jono) {
+
+        if (nytY > 0 && kartta[nytY - 1][nytX] != '#' && pohja[nytY - 1][nytX].getValue() == Integer.MAX_VALUE) {
+            Node ylos = pohja[nytY - 1][nytX];
+            ylos.setReitti(solmu.getReitti(), 'Y');
+            ylos.setValue(solmu.getValue() + 1);
+            jono.lisaa(ylos);
+        }
+    }
+
+    /**
+     * Katsoo kyseisen solmun vasemmallepuolelle
+     *
+     * @param nytY Tämänhetkisen solmun y-sijainti
+     * @param nytX Tämänhetkisen solmun x-sijainti
+     * @param solmu Tämänhetkinen solmu
+     * @param jono Tärkeysjono
+     */
+    private void tarkastaVasen(int nytX, int nytY, Node solmu, PriorityQueue jono) {
+        if (nytX > 0 && kartta[nytY][nytX - 1] != '#' && pohja[nytY][nytX - 1].getValue() == Integer.MAX_VALUE) {
+            Node vasen = pohja[nytY][nytX - 1];
+            vasen.setReitti(solmu.getReitti(), 'V');
+            vasen.setValue(solmu.getValue() + 1);
+            jono.lisaa(vasen);
+        }
+    }
+
+    /**
+     * Katsoo kyseisen solmun oikeallepuolelle
+     *
+     * @param nytY Tämänhetkisen solmun y-sijainti
+     * @param nytX Tämänhetkisen solmun x-sijainti
+     * @param solmu Tämänhetkinen solmu
+     * @param jono Tärkeysjono
+     */
+    private void tarkastaOikea(int nytX, int nytY, Node solmu, PriorityQueue jono) {
+        if (nytX < kartta[0].length - 1 && kartta[nytY][nytX + 1] != '#' && pohja[nytY][nytX + 1].getValue() == Integer.MAX_VALUE) {
+            Node oikea = pohja[nytY][nytX + 1];
+            oikea.setReitti(solmu.getReitti(), 'O');
+            oikea.setValue(solmu.getValue() + 1);
+            jono.lisaa(oikea);
+        }
+    }
+
+    /**
+     * Katsoo kyseisen solmun alapuolelle
+     *
+     * @param nytY Tämänhetkisen solmun y-sijainti
+     * @param nytX Tämänhetkisen solmun x-sijainti
+     * @param solmu Tämänhetkinen solmu
+     * @param jono Tärkeysjono
+     */
+    private void tarkastaAlas(int nytY, int nytX, Node solmu, PriorityQueue jono) {
+        if (nytY < kartta.length - 1 && kartta[nytY + 1][nytX] != '#' && pohja[nytY + 1][nytX].getValue() == Integer.MAX_VALUE) {
+            Node alas = pohja[nytY + 1][nytX];
+            alas.setReitti(solmu.getReitti(), 'A');
+            alas.setValue(solmu.getValue() + 1);
+            jono.lisaa(alas);
         }
     }
 
@@ -118,11 +161,11 @@ public class Logiikka {
         Node vika = pohja[pohja.length - 1][pohja[0].length - 1];
         String reitti = vika.getReitti();
 
-        char[][] perkele = new char[kartta.length][kartta[0].length];
+        char[][] reittiKartta = new char[kartta.length][kartta[0].length];
 
         for (int i = 0; i < kartta.length; i++) {
             for (int j = 0; j < kartta[0].length; j++) {
-                perkele[i][j] = kartta[i][j];
+                reittiKartta[i][j] = kartta[i][j];
             }
         }
 
@@ -130,33 +173,90 @@ public class Logiikka {
         int y = 0;
 
         for (int i = 0; i < reitti.length(); i++) {
-            //ylös
-            if (reitti.charAt(i) == 'Y') {
-                perkele[y][x] = '|';
-                y--;
-            }
-
-            //alas
-            if (reitti.charAt(i) == 'A') {
-                perkele[y][x] = '|';
-                y++;
-            }
-
-            //oikea
-            if (reitti.charAt(i) == 'O') {
-                perkele[y][x] = '-';
-                x++;
-            }
-
-            //vasen
-            if (reitti.charAt(i) == 'V') {
-                perkele[y][x] = '-';
-                x--;
-            }
+            y = ylos(reitti, i, reittiKartta, y, x);
+            y = alas(reitti, i, reittiKartta, y, x);
+            x = oikea(reitti, i, reittiKartta, y, x);
+            x = vasen(reitti, i, reittiKartta, y, x);
         }
-        perkele[0][0] = '*';
-        perkele[y][x] = '*';
-        printPath(perkele);
+        reittiKartta[0][0] = '*';
+        reittiKartta[y][x] = '*';
+        printPath(reittiKartta);
+    }
+
+    /**
+     * Katsoo onko reitin tietyssä kohdassa menty vasemmalle
+     *
+     * @param reitti Kuljettu reitti
+     * @param i Reitin askeleen indeksi
+     * @param reittiKartta Kartta johon lyhin reitti piirretään
+     * @param y taulukon korkeusindeksi
+     * @param x taulukon leveysindeksi
+     * @return uusi leveysinfrkdi
+     */
+    private int vasen(String reitti, int i, char[][] reittiKartta, int y, int x) {
+        //vasen
+        if (reitti.charAt(i) == 'V') {
+            reittiKartta[y][x] = '-';
+            x--;
+        }
+        return x;
+    }
+
+    /**
+     * Katsoo onko reitin tietyssä kohdassa menty ylös
+     *
+     * @param reitti Kuljettu reitti
+     * @param i Reitin askeleen indeksi
+     * @param reittiKartta Kartta johon lyhin reitti piirretään
+     * @param y taulukon korkeusindeksi
+     * @param x taulukon leveysindeksi
+     * @return uusi leveysinfrkdi
+     */
+    private int ylos(String reitti, int i, char[][] reittiKartta, int y, int x) {
+        //ylös
+        if (reitti.charAt(i) == 'Y') {
+            reittiKartta[y][x] = '|';
+            y--;
+        }
+        return y;
+    }
+
+    /**
+     * Katsoo onko reitin tietyssä kohdassa menty alas
+     *
+     * @param reitti Kuljettu reitti
+     * @param i Reitin askeleen indeksi
+     * @param reittiKartta Kartta johon lyhin reitti piirretään
+     * @param y taulukon korkeusindeksi
+     * @param x taulukon leveysindeksi
+     * @return uusi leveysinfrkdi
+     */
+    private int alas(String reitti, int i, char[][] reittiKartta, int y, int x) {
+        //alas
+        if (reitti.charAt(i) == 'A') {
+            reittiKartta[y][x] = '|';
+            y++;
+        }
+        return y;
+    }
+
+    /**
+     * Katsoo onko reitin tietyssä kohdassa menty oikealle
+     *
+     * @param reitti Kuljettu reitti
+     * @param i Reitin askeleen indeksi
+     * @param reittiKartta Kartta johon lyhin reitti piirretään
+     * @param y taulukon korkeusindeksi
+     * @param x taulukon leveysindeksi
+     * @return uusi leveysinfrkdi
+     */
+    private int oikea(String reitti, int i, char[][] reittiKartta, int y, int x) {
+        //oikea
+        if (reitti.charAt(i) == 'O') {
+            reittiKartta[y][x] = '-';
+            x++;
+        }
+        return x;
     }
 
     /**
