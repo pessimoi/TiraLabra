@@ -2,8 +2,16 @@ package tiralabra;
 
 import java.util.*;
 
+/**
+ * Saa ohjelman käyntiin
+ *
+ * @author Pessi Moilanen
+ */
 public class TiraLabra {
 
+    /**
+     * Suorittaa alkukyselyt
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -38,7 +46,7 @@ public class TiraLabra {
         System.out.println("A*");
         System.out.println("");
 
-        Logic star = new Logic(map, 0);
+        Logiikka star = new Logiikka(map, 0);
         star.kaynnisty();
         star.createPath();
 
@@ -47,7 +55,7 @@ public class TiraLabra {
         System.out.println("Dijkstra");
         System.out.println("");
 
-        Logic dijkstra = new Logic(map, 1);
+        Logiikka dijkstra = new Logiikka(map, 1);
         dijkstra.kaynnisty();
         dijkstra.createPath();
 

@@ -1,6 +1,11 @@
 package tiralabra;
 
-public class Logic {
+/**
+ * Logiikka kaikelle
+ *
+ * @author Pessi Moilanen
+ */
+public class Logiikka {
 
     private static Node[][] pohja;
     private static char[][] kartta;
@@ -8,14 +13,26 @@ public class Logic {
     private static String steps;
     private static int type;
 
-    public Logic(char[][] kartta, int type) {
+    /**
+     * Alustaa asiat
+     *
+     * @param kartta Sisältää char[][]tyyppisen kartan, josta reitti tullaan
+     * etsimään
+     * @param tyyppi Sisältää tiedon siitä mitä algoritmia tullaan käyttämään,
+     * Dijkstraa vai A*
+     */
+    public Logiikka(char[][] kartta, int tyyppi) {
         this.kartta = kartta;
         this.path = new char[kartta.length][kartta[0].length];
         this.steps = "";
         this.pohja = luoPohja(kartta);
-        this.type = type;
+        this.type = tyyppi;
     }
 
+    /**
+     * Laittaa halutun hakualgoritmin pyörimään, alkaa käymään karttaa läpi,
+     * hyödyntän priorityqueuea
+     */
     public void kaynnisty() {
 
         int koko = (kartta.length * kartta[0].length);
@@ -71,6 +88,13 @@ public class Logic {
         }
     }
 
+    /**
+     * Luo Node[][], jonka avulla algoritmi tulee toimimaan.
+     *
+     * @param kartta Sisältää char[][]tyyppisen kartan, josta reitti tullaan
+     * etsimään
+     * @return palauttaa Node[][], joka alustettu käymällä läpi kartta
+     */
     private Node[][] luoPohja(char[][] kartta) {
         Node[][] pohja = new Node[kartta.length][kartta[0].length];
         for (int i = 0; i < kartta.length; i++) {
@@ -86,6 +110,10 @@ public class Logic {
         return pohja;
     }
 
+    /**
+     * Piirtää lyhimmän reitin samalle pohjalle, mistä lyhintä reittiä
+     * yritettiin hakea
+     */
     public void createPath() {
         Node vika = pohja[pohja.length - 1][pohja[0].length - 1];
         String reitti = vika.getReitti();
@@ -131,6 +159,11 @@ public class Logic {
         printPath(perkele);
     }
 
+    /**
+     * Tulostaa kartan
+     *
+     * @param kartta
+     */
     public void printPath(char[][] kartta) {
 
         int height = kartta.length;

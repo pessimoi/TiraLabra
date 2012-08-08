@@ -1,17 +1,33 @@
 package tiralabra;
 
+/**
+ * Tärkeysjono
+ *
+ * @author Pessi Moilanen
+ */
 public class PriorityQueue {
 
     private int koko;
     private Node[] jono;
     private int type;
 
+    /**
+     * Alustaa asiat
+     *
+     * @param size Jonon koko
+     * @param type Jonon tyyppi, erilainen käyttäytyminen Dijkstrassa ja A*
+     */
     public PriorityQueue(int size, int type) {
         this.koko = 0;
         this.jono = new Node[koko];
         this.type = type;
     }
 
+    /**
+     * Lisää jonoon jäsenen
+     *
+     * @param node Uusi jäsen joka lisätään
+     */
     public void lisaa(Node node) {
 
         int num = 0;
@@ -20,11 +36,11 @@ public class PriorityQueue {
             while (true) {
                 int uudesta = node.getValue();
                 int vertaus = node.getValue();
-               if (type == 1){
-                   uudesta = uudesta + node.getToGo();
-                   vertaus = vertaus + jono[num].getToGo();
-               }
-                 
+                if (type == 1) {
+                    uudesta = uudesta + node.getToGo();
+                    vertaus = vertaus + jono[num].getToGo();
+                }
+
                 if (uudesta < vertaus) {
                     break;
                 } else if (num == koko - 1) {
@@ -59,6 +75,11 @@ public class PriorityQueue {
         koko++;
     }
 
+    /**
+     * Palauttaa jonon ensimmäisen ja poistaa sen jonosta
+     *
+     * @return Jonon ensimmäinen jäsen
+     */
     public Node pop() {
         Node palaute = jono[0];
 
@@ -76,13 +97,18 @@ public class PriorityQueue {
         return palaute;
     }
 
+    /**
+     * Tarkistaa onko tyhjä
+     *
+     * @return True tai False
+     */
     public boolean isEmpty() {
-        if (koko == 0) {
-            return true;
-        }
-        return false;
+        return (koko == 0);
     }
 
+    /**
+     * Tulostaa jonon
+     */
     public void printQue() {
         for (int i = 0; i < jono.length; i++) {
             System.out.println(jono[i].getToGo());
