@@ -1,11 +1,11 @@
 package tiralabra;
 
 /**
- * Logiikka kaikelle
+ * Logic kaikelle
  *
  * @author Pessi Moilanen
  */
-public class Logiikka {
+public class Logic {
 
     private static Node[][] pohja;
     private static char[][] kartta;
@@ -21,7 +21,7 @@ public class Logiikka {
      * @param tyyppi Sisältää tiedon siitä mitä algoritmia tullaan käyttämään,
      * Dijkstraa vai A*
      */
-    public Logiikka(char[][] kartta, int tyyppi) {
+    public Logic(char[][] kartta, int tyyppi) {
         this.kartta = kartta;
         this.path = new char[kartta.length][kartta[0].length];
         this.steps = "";
@@ -194,7 +194,6 @@ public class Logiikka {
      * @return uusi leveysinfrkdi
      */
     private int vasen(String reitti, int i, char[][] reittiKartta, int y, int x) {
-        //vasen
         if (reitti.charAt(i) == 'V') {
             reittiKartta[y][x] = '-';
             x--;
@@ -213,7 +212,6 @@ public class Logiikka {
      * @return uusi leveysinfrkdi
      */
     private int ylos(String reitti, int i, char[][] reittiKartta, int y, int x) {
-        //ylös
         if (reitti.charAt(i) == 'Y') {
             reittiKartta[y][x] = '|';
             y--;
@@ -232,7 +230,6 @@ public class Logiikka {
      * @return uusi leveysinfrkdi
      */
     private int alas(String reitti, int i, char[][] reittiKartta, int y, int x) {
-        //alas
         if (reitti.charAt(i) == 'A') {
             reittiKartta[y][x] = '|';
             y++;
@@ -251,7 +248,6 @@ public class Logiikka {
      * @return uusi leveysinfrkdi
      */
     private int oikea(String reitti, int i, char[][] reittiKartta, int y, int x) {
-        //oikea
         if (reitti.charAt(i) == 'O') {
             reittiKartta[y][x] = '-';
             x++;
