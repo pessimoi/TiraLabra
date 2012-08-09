@@ -36,11 +36,11 @@ public class PriorityQueue {
             while (true) {
                 int uudesta = node.getValue();
                 int vertaus = node.getValue();
-                
+
                 //Tarkistaa onko käytettävä A* vai Dijkstraa
                 if (type == 1) {
-                    uudesta = uudesta + node.getToGo();
-                    vertaus = vertaus + jono[num].getToGo();
+                    uudesta = uudesta + node.getDistanceToCorner();
+                    vertaus = vertaus + jono[num].getDistanceToCorner();
                 }
 
                 if (uudesta < vertaus) {
@@ -68,6 +68,7 @@ public class PriorityQueue {
 
     /**
      * Laittaa halutun solmun oikeaan väliin jonossa
+     *
      * @param num Kohta johon solmu on laitettava
      * @param node Solmu joka lisätään jonoon
      * @param kopio Kopio taulukosta
@@ -118,7 +119,7 @@ public class PriorityQueue {
      */
     public void printQue() {
         for (int i = 0; i < jono.length; i++) {
-            System.out.println(jono[i].getToGo());
+            System.out.println(jono[i].getDistanceToCorner());
         }
         if (isEmpty()) {
             System.out.println("TYHJÄ");

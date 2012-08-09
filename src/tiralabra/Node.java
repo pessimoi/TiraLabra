@@ -1,13 +1,15 @@
 package tiralabra;
+
 /**
  * Alkio ja sen olemus
+ *
  * @author Pessi Moilanen
  */
 public class Node {
 
     private int x;
     private int y;
-    private int toGo;
+    private int distanceToCorner;
     private int value;
     private String reitti;
 
@@ -22,12 +24,13 @@ public class Node {
         this.x = x;
         this.y = y;
         this.value = Integer.MAX_VALUE;
-        this.toGo = (h - y) + (w - x);
+        this.distanceToCorner = (h - y) + (w - x);
         this.reitti = "";
     }
 
     /**
      * Asettaa lyhimmän reitin kyseiseen alkioon
+     *
      * @param val Lyhin reitti alkioon
      */
     public void setValue(int val) {
@@ -36,6 +39,7 @@ public class Node {
 
     /**
      * Palauttaa lyhimmän reitin kyseiseen alkioon
+     *
      * @return Lyhin reitti alkioon
      */
     public int getValue() {
@@ -44,6 +48,7 @@ public class Node {
 
     /**
      * Palauttaa alkion x-koordinaatin
+     *
      * @return alkion x-koordinaatti
      */
     public int getX() {
@@ -52,6 +57,7 @@ public class Node {
 
     /**
      * Palauttaa alkion y-koordinaatin
+     *
      * @return alkion y-koordinaatti
      */
     public int getY() {
@@ -60,14 +66,16 @@ public class Node {
 
     /**
      * Palauttaa Kuljetun matkan ja jäljellä olevan matkan summan
+     *
      * @return
      */
-    public int getToGo() {
-        return toGo + reitti.length();
+    public int getDistanceToCorner() {
+        return distanceToCorner + reitti.length();
     }
 
     /**
      * Palauttaa reitin
+     *
      * @return reitti
      */
     public String getReitti() {
@@ -75,7 +83,9 @@ public class Node {
     }
 
     /**
-     * Päivittää reittiä kyseiseen jäsenen suunnan perusteella josta tähän on saavuttu
+     * Päivittää reittiä kyseiseen jäsenen suunnan perusteella josta tähän on
+     * saavuttu
+     *
      * @param aiempi Edellisen jäsenen sisältämä reitti
      * @param suunta Edellisestä jäsenestä kyseiseen jäseneen siirryty askel
      */

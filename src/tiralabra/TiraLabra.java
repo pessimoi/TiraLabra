@@ -46,7 +46,7 @@ public class TiraLabra {
         System.out.println("A*");
         System.out.println("");
 
-        Logiikka star = new Logiikka(map, 0);
+        Logic star = new Logic(map, 0);
         star.kaynnisty();
         star.createPath();
 
@@ -55,7 +55,7 @@ public class TiraLabra {
         System.out.println("Dijkstra");
         System.out.println("");
 
-        Logiikka dijkstra = new Logiikka(map, 1);
+        Logic dijkstra = new Logic(map, 1);
         dijkstra.kaynnisty();
         dijkstra.createPath();
 
