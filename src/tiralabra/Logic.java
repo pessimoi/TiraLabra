@@ -9,8 +9,6 @@ public class Logic {
 
     private static Node[][] pohja;
     private static char[][] kartta;
-    private static char[][] path;
-    private static String steps;
     private static int type;
 
     /**
@@ -23,8 +21,6 @@ public class Logic {
      */
     public Logic(char[][] kartta, int tyyppi) {
         this.kartta = kartta;
-        this.path = new char[kartta.length][kartta[0].length];
-        this.steps = "";
         this.pohja = luoPohja(kartta);
         this.type = tyyppi;
     }

@@ -1,6 +1,7 @@
 package tiralabra;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Saa ohjelman käyntiin
@@ -10,13 +11,14 @@ import java.util.*;
 public class TiraLabra {
 
     /**
-     * Suorittaa alkukyselyt
+     * Suorittaa alkukyselyt ja suoritusta
      */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         MapCreator mapCreator;
         char[][] map;
+
 
 
         System.out.println("Moi! ");
@@ -41,23 +43,36 @@ public class TiraLabra {
             map = mapCreator.generateMap();
         }
 
-        System.out.println("");
-        System.out.println("");
-        System.out.println("A*");
-        System.out.println("");
-
-        Logic star = new Logic(map, 0);
-        star.kaynnisty();
-        star.createPath();
-
-        System.out.println("");
-        System.out.println("");
+        System.out.println();
+        System.out.println();
         System.out.println("Dijkstra");
-        System.out.println("");
+        System.out.println();
+
 
         Logic dijkstra = new Logic(map, 1);
+        long start = System.nanoTime();
         dijkstra.kaynnisty();
+        long end = System.nanoTime();
+        long elapsedTime = end - start;
+        double seconds = (double) elapsedTime / 1000000000.0;
         dijkstra.createPath();
+        System.out.println("Aikaa kulunut: " + seconds + "s");
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println("A*");
+        System.out.println();
+
+
+        Logic star = new Logic(map, 0);
+        start = System.nanoTime();
+        star.kaynnisty();
+        end = System.nanoTime();
+        elapsedTime = end - start;
+        seconds = (double) elapsedTime / 1000000000.0;
+        star.createPath();
+        System.out.println("Aikaa kulunut: " + seconds + "s");
 
     }
 }

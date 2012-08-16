@@ -73,7 +73,7 @@ public class MapCreator {
             laskuri--;
         }
 
-        printMap(map);
+//        printMap(map);
 
         return map;
     }

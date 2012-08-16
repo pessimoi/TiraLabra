@@ -35,7 +35,7 @@ public class PriorityQueue {
         if (koko > 0) {
             while (true) {
                 int uudesta = node.getValue();
-                int vertaus = node.getValue();
+                int vertaus = jono[num].getValue();
 
                 //Tarkistaa onko käytettävä A* vai Dijkstraa
                 if (type == 1) {
@@ -43,7 +43,7 @@ public class PriorityQueue {
                     vertaus = vertaus + jono[num].getDistanceToCorner();
                 }
 
-                if (uudesta < vertaus) {
+                if (uudesta <= vertaus) {
                     break;
                 } else if (num == koko - 1) {
                     num++;
@@ -53,7 +53,9 @@ public class PriorityQueue {
             }
 
             Node[] kopio = new Node[jono.length];
-            System.arraycopy(jono, 0, kopio, 0, kopio.length);
+            for(int i = 0; i < kopio.length; i++){
+                kopio[i] = jono[i];
+            }
 
             jono = new Node[koko + 1];
             jononMuokkaus(num, node, kopio);
@@ -94,7 +96,9 @@ public class PriorityQueue {
         Node palaute = jono[0];
 
         Node[] kopio = new Node[koko];
-        System.arraycopy(jono, 0, kopio, 0, kopio.length);
+        for(int i = 0; i < kopio.length; i++){
+            kopio[i] = jono[i];
+        }
 
         jono = new Node[koko - 1];
         for (int i = 1; i < kopio.length; i++) {
