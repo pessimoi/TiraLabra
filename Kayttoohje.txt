@@ -1,0 +1,17 @@
+Käyttöohje
+
+Miten ohjelma suoritetaan, miten eri toiminnallisuuksia käytetään?
+Ohjelman voi ajaa normaalisti esim. NetBeansilla tai vastaavalla alustalla. Ohjelmassa on selkeät ohjeet käytön yhteydessä kuinka sitä tulee käyttää.
+
+
+Minkä muotoisia syötteitä ohjelma hyväksyy?
+Kun ohjelman käynnistää:
+1. Kysytään ensin korkeutta ja sitten leveyttä, eli kokonaisluku ja 'Enter'
+2. Tämän jälkeen jos halutaan syöttää oma kartta, painetaan suorilla 'Enter'
+   Kartan palaset on syötettävä yksitellen ja painettava Enteriä jokaisen syötön jälkeen, jos syöte on tyhjä niin kohta on tyhjä.
+3. Jos ei haluttu syöttää omaa karttaa, tulee kysymys kuinka paljo halutaan prosentuaalisesti pinta-alasta tyhjiä kohtia taas kokonaisluku ja 'Enter'
+4. Tämän jälkeen ohjelma luo ja ratkoo itsetehdyn tai generoidun kartan ja laittaa siitä tulostetta ulos. Simple as that.
+
+
+Missä kansiossa on jar ja ajamiseen tarvittavat testitiedostot?
+TiraLabra\dist\Tiralabra.jar

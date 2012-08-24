@@ -1,0 +1,47 @@
+Testausdokumentti
+
+
+Mitä on testattu, miten tämä tehtiin?
+Tein kaikki käyttötapaus testaukset omalla läppärilläni. Tein myös JUNIT testit kaikesta mitä, pystyi järkevästi testaamaan.
+Aluksi ajoin noin 50x satunnaisia testejä erilaisilla syötteillä, jotta varmistun, että mitään hassua ei tapahtuisi, kuten ei tapahtunutkaan.
+Sitten suoritin enemmän kontrolloituja testejä, joista myös otin ajan ylös, jottai Dijkstran ja A* ero näkyisi selvästi.
+
+
+Minkälaisilla syötteillä testaus tehtiin (vertailupainotteisissa töissä tärkeätä)?
+
+HUOM! tyhjät ruudut tarkoittaa kyseistä prosentuaalista määrää pinta-alasta jotka arvotaan, jopa samoihin kohtiinki.
+HUOM! testattu syötteellä, kunnes tulee kartta, jossa mahdollinen reitti
+
+1250x1250 aiheutti toisinaan java heap space errorin ja tätä suuremmat.
+
+Testit 150% tyhjiä ruutuaa
+
+KOKO		DIJKSTRA    	A*
+
+100x100		0.062s		0.030s
+		0.060s		0.029s
+
+250x250		0.207s		0.111s
+		0.225s		0.119s
+
+500x500		1.553s		0.983s
+		1.443s		0.793s
+
+750x750		5.819s		2.576s
+		5.832s		2.607s
+
+1000x1000	13.567s		6.840s
+		13.357s		6.769s
+		
+1250x1250	31.034s		17.947s
+		32.851s		19.337s
+
+
+
+Miten testit voidaan toistaa?
+Testit voidaan toistaa helposti, käyttämällä kyseisiä syötteitä, toki jonkinlaisia eroavaisuuksia voi tulla, mutta tulokset ovat suunnilleen samoja.
+
+
+
+Ohjelman toiminnan empiirisen testauksen tulosten esittäminen graafisessa muodossa.?
+Liitteenä, kuvaaja.

@@ -1,0 +1,38 @@
+Toteutusdokumentti
+
+
+Ohjelman yleisrakenne?
+Ohjelmassa on luokkia: Main luokka, Node luokka, MapCreator luokka, Logic luokka, PriorityQueue luokka
+Main luokka laittaa asiat pyörimään, luo kartan MapCreator luokan avulla, sen jälkeen käynnistää Logic luokan, joka ajaa eri algoritmit. 
+Logic luokan sisällä luodaan Node kartta, ja algoritmiä pyöritetään käyttäen PriorityQueuea.
+
+
+Saavutetut aika- ja tilavaativuudet (m.m. O-analyysi pseudokoodista)?
+Algoritmien osalta saavutinkin sen mitä pyrinkin saavuttamaan. Keko tosin oli huonommin toteutettu kuin minimikeko olisi ollut.
+Koska jononi pop() operaatio kulutti O(n) aikaa, ei se ollut kovin tehokas. 
+A* toimi Manhattan etäisyydellä, kuten olin suunitellutkin, sen toimivuus oli kutakuinkin sama kuin toteutusdokkarissa eli. 
+
+Suorituskyky- ja O-analyysivertailu (mikäli työ vertailupainotteinen)?
+A* toimi odotetusti nopeammin kuin Dijkstra, testausdokumentissa lisää tietoa ajankulusta, samoin liitteenä oleva kaavio.
+
+A* toteutus oli kutakuinkin samaa kuin toteutusdokkarissa eli:
+O(log n)
+Tilavaativuus on O(n)
+
+Dijkstrankin toteutus oli kutakuinkin myöskin samaa kuin toteutusdokkarissa eli:
+O(|E| + |V| log|V|)
+Tilavaativuus on O(n)
+
+Työn mahdolliset puutteet ja parannusehdotukset?
+
+Pahempia puutteita ei tule mieleen. Parantaa työtä olisi voinut.
+Muummoassa tekemällä Priorityqueuen minimi kekoon, olisi saanut ohjelmasta nopeamman.
+Myös ohjelman olisi voinut toteuttaa mielekkäämpään ympäristöön kuin tämän hetkinen char[][]  reitinetsintätoteutus.
+Rakennettakin toki olisi voinut tehdä paremmaksi ja siistimmäksi.
+
+
+Lähteet
+
+http://en.wikipedia.org/wiki/A*
+http://en.wikipedia.org/wiki/Dijkstra's_algorithm
+T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein: Introduction to Algorithms, 3rd ed., MIT Press, 2009.

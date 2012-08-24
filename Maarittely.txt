@@ -9,14 +9,15 @@ Määrittelydokumentti
 
 1. Tulen käyttämään työssäni A* ja dijkstran algoritmejä. 
 
-2. Tietorakenteita, joita tulen käyttämään ovat mininimi keko ja priority queue
+2. Tietorakenteita, joita tulen käyttämään on lähinnä jonkinlainen PriorityQueue.
 
-3. Ohjelma saa käyttäjältä kartan korkeuden ja leveyden syötteenä, sekä tyhjät kohdat syötteenä, joidenka perusteella se luo kartan.
+3. Ohjelma saa käyttäjältä kartan korkeuden ja leveyden syötteenä, sekä tyhjät kohdat syötteenä, joidenka perusteella se luo kartan ja etsii lyheimmän reitin.
 
 4. A* aikavaativuus riippuu heurestiikasta, mutta manhattan etäisyydellä, se on suunilleen O(log n)
    Tilavaativuus on O(n)
    Dijkstrassa worst case perfomance on O(|E| + |V| log |V|)
    Tilavaativuus on O(n) 
 
-5. Wikipedia  
+5. http://en.wikipedia.org/wiki/A*
+   http://en.wikipedia.org/wiki/Dijkstra's_algorithm
    T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein: Introduction to Algorithms, 3rd ed., MIT Press, 2009.
