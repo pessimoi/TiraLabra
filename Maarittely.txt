@@ -7,7 +7,8 @@ Määrittelydokumentti
 5. Lähteet?
 ---------------------------------------------------------------------------------
 
-1. Tulen käyttämään työssäni A* ja dijkstran algoritmejä. 
+1. Tulen käyttämään työssäni A* ja dijkstran algoritmejä. Koska ne ovat melko mielenkiintoisia toteuttaa, ja koen että ne ovat samalla mukavan haastavia, koska en ole ennen toteuttanut vastaavia algoritmejä.
+   Pitää huolehtia siitä, kuinka Priorityqueue hoitaa alkioiden järjestyksen, sekä kuinka algoritmin on edettävä ja käsiteltävä solmuja löytääkseen lyhimmän reitin.
 
 2. Tietorakenteita, joita tulen käyttämään on lähinnä jonkinlainen PriorityQueue.
 
